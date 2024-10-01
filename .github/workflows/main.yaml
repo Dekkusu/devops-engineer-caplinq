@@ -19,8 +19,7 @@ jobs:
         uses: docker/setup-buildx-actions@v3
 
       - name: Login to Docker Repo
-          run:
-            echo ${{ secrets.DOCKER_PASS }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+          run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
 
       - name: Build and Push
         uses: docker/build-push-action@v6
