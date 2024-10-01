@@ -1,0 +1,28 @@
+name: dotnet CI/CD pipeline
+on:
+  push:
+    branches:
+      - 'main'
+
+# env:
+#     DOCKER_USER: ${{ secrets.DOCKER_USER }}
+#     DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Docker setup
+        uses: actions/checkout@v3
+
+      - name: Setup docker
+        uses: docker/setup-buildx-actions@v3
+        with:
+          docker login -u {{ secrets.DOCKER_USER }} -p {{ secrets.DOCKER_PASS }} dekkusu/devops-things
+
+      - name: Build and Push
+        uses: docker/build-push-action@v6
+        with:
+          context: ./Caplinq.Devops
+          push: true
+          tags: dekkusu/devops-things:caplinq
