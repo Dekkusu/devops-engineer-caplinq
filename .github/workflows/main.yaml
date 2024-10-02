@@ -26,6 +26,6 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v6
         with:
-          context: ./Caplinq.DevOps/Api
+          context: ./Caplinq.DevOps
           push: true
           tags: dekkusu/devops-things:caplinq
