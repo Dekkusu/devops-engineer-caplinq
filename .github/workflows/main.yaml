@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Docker setup
+      - name: Checkout Repo
         uses: actions/checkout@v3
 
       - name: Setup docker
@@ -21,8 +21,6 @@ jobs:
       - name: Login to Docker Repo
         run: echo ${{ secrets.DOCKER_PASS }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
 
-      - name: List Directories
-        run: ls -la 
       - name: Build and Push
         uses: docker/build-push-action@v6
         with:
