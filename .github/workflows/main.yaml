@@ -29,3 +29,13 @@ jobs:
           context: ./Caplinq.DevOps
           push: true
           tags: dekkusu/devops-things:caplinq
+
+      - name: Kubernetes set context
+        uses: Azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+
+      - name: Restart Kubernetes Deployment
+        run:  kubectl rollout restart deployments -n dotnet
+     
