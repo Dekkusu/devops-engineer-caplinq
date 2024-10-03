@@ -22,13 +22,13 @@ jobs:
           dotnet-version: '8.0.x'
       
       - name: Install dependencies
-        run: dotnet restore /Caplinq.DevOps/Caplinq.DevOps.sln
+        run: dotnet restore Caplinq.DevOps/Caplinq.DevOps.sln
 
       - name: Build dotnet
-        run: dotnet build /Caplinq.DevOps/Caplinq.DevOps.sln
+        run: dotnet build Caplinq.DevOps/Caplinq.DevOps.sln
 
       - name: Test dotnet
-        run: dotnet test /Caplinq.DevOps/Caplinq.DevOps.sln
+        run: dotnet test Caplinq.DevOps/Caplinq.DevOps.sln
 
       - name: Setup docker
         uses: docker/setup-buildx-action@v3
