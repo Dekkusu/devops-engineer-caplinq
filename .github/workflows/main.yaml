@@ -25,13 +25,13 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore /Caplinq.DevOps/Caplinq.DevOps.sln
 
       - name: Build dotnet
-        run: dotnet build
+        run: dotnet build /Caplinq.DevOps/Caplinq.DevOps.sln
 
       - name: Test dotnet
-        run: dotnet test
+        run: dotnet test /Caplinq.DevOps/Caplinq.DevOps.sln
 
       - name: Setup docker
         uses: docker/setup-buildx-action@v3
